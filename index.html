@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Three.js 3D puzzle</title>
+    <style>
+      * {
+          margin: 0;
+          padding: 0;
+          box-sizing: border-box;
+      }
+
+      #button {
+        font-size: 144px;
+        background-color: #3352ff;
+        color: white;
+        border: none;
+        border-radius: 20px;
+        padding: 10px 20px;
+        position: absolute;
+        top: 70%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        z-index: 100;
+      }      
+
+      #fullscreen {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: #cccccc18;
+        backdrop-filter: blur(15px);
+        z-index: 99;
+      }
+
+      #img {
+        position: absolute;
+        width: 200px;
+        height: 200px;
+        top: 0;
+        right: 0;
+        display: none;
+      }
+
+      #map {
+        position: absolute;
+        width: 70px;
+        height: 70px;
+        top: 10px;
+        left: 10px;
+      }
+
+      #map {
+        display: none;
+      }
+
+    </style>
+  </head>
+  <body>
+    <div id="fullscreen"></div>
+    
+    <button id="button" style="vertical-align:middle" onclick="povorot()"><span>Start</span></button>
+    <div id="map" style="display: flex; flex-wrap: wrap; gap: 7px;">
+      <div style="width: 10px; height: 10px; background-color: rgb(85, 75, 221);" id="cube0"></div>
+      <div style="width: 10px; height: 10px; background-color: rgb(85, 75, 221);" id="cube1"></div>
+      <div style="width: 10px; height: 10px; background-color: rgb(85, 75, 221);" id="cube2"></div>
+      <div style="width: 10px; height: 10px; background-color: rgb(85, 75, 221);" id="cube3"></div>
+      <div style="width: 10px; height: 10px; background-color: rgb(85, 75, 221);" id="cube4"></div>
+      <div style="width: 10px; height: 10px; background-color: rgb(85, 75, 221);" id="cube5"></div>
+      <div style="width: 10px; height: 10px; background-color: rgb(85, 75, 221);" id="cube6"></div>
+      <div style="width: 10px; height: 10px; background-color: rgb(85, 75, 221);" id="cube7"></div>
+      <div style="width: 10px; height: 10px; background-color: rgb(85, 75, 221);" id="cube8"></div>
+      <div style="width: 10px; height: 10px; background-color: rgb(85, 75, 221);" id="cube9"></div>
+      <div style="width: 10px; height: 10px; background-color: rgb(85, 75, 221);" id="cube10"></div>
+      <div style="width: 10px; height: 10px; background-color: rgb(85, 75, 221);" id="cube11"></div>
+      <div style="width: 10px; height: 10px; background-color: rgb(85, 75, 221);" id="cube12"></div>
+      <div style="width: 10px; height: 10px; background-color: rgb(85, 75, 221);" id="cube13"></div>
+      <div style="width: 10px; height: 10px; background-color: rgb(85, 75, 221);" id="cube14"></div>
+      <div style="width: 10px; height: 10px; background-color: rgb(85, 75, 221);" id="cube15"></div>    </div>   
+    <figure>
+      <img id="img" src="github.jpg" alt="Результат">
+      <!-- <figcaption>В результате должно получится</figcaption> -->
+    </figure>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="script.js"></script>
+  </body>
+</html>
