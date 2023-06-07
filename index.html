@@ -56,6 +56,26 @@
         display: none;
       }
 
+      #modal {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.7);
+        display: none;
+        justify-content: center;
+        align-items: center;
+      }
+
+      #message {
+        background-color: white;
+        padding: 20px;
+        font-size: 24px;
+        text-align: center;
+      }
+
+
     </style>
   </head>
   <body>
@@ -83,6 +103,9 @@
       <img id="img" src="github.jpg" alt="Результат">
       <!-- <figcaption>В результате должно получится</figcaption> -->
     </figure>
+    <div id="modal">
+      <div id="message">Поздравляем! Вы победили!</div>
+    </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
     <script src="script.js"></script>
   </body>
