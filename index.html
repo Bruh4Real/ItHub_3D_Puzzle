@@ -9,6 +9,15 @@
           padding: 0;
           box-sizing: border-box;
       }
+      
+      button {
+        font-size: 120px;
+        background-color: #3352ff;
+        color: white;
+        border: none;
+        border-radius: 20px;
+        padding: 10px 20px;
+      }
 
       #button {
         font-size: 144px;
@@ -22,8 +31,7 @@
         left: 50%;
         transform: translate(-50%, -50%);
         z-index: 100;
-      }      
-
+      }
       #fullscreen {
         position: absolute;
         top: 0;
@@ -34,7 +42,6 @@
         backdrop-filter: blur(15px);
         z-index: 99;
       }
-
       #img {
         position: absolute;
         width: 200px;
@@ -43,7 +50,6 @@
         right: 0;
         display: none;
       }
-
       #map {
         position: absolute;
         width: 70px;
@@ -51,11 +57,9 @@
         top: 10px;
         left: 10px;
       }
-
       #map {
         display: none;
       }
-
       #modal {
         position: fixed;
         top: 0;
@@ -67,7 +71,6 @@
         justify-content: center;
         align-items: center;
       }
-
       #message {
         background-color: white;
         padding: 20px;
@@ -75,38 +78,67 @@
         text-align: center;
       }
 
-
+      #upr {
+        position: absolute; 
+        left: 10px;
+        width: 400px; 
+        height: 100px; 
+        background-color: transparent; 
+        color: white; 
+        text-align: center; 
+        font-size: 20px;
+        font-family: Arial, sans-serif;
+      }
     </style>
   </head>
   <body>
-    <div id="fullscreen"></div>
     
-    <button id="button" style="vertical-align:middle" onclick="povorot()"><span>Start</span></button>
+    <div id="fullscreen"></div>    
+    <button id="button" style="vertical-align:middle" onclick="povorot()">
+      <span>
+        Start
+      </span>
+    </button>
+    <div id="upr" style=" top: 50%;">
+      Для взаимодействия с игрой необходимо использовать мышь и клавиатуру
+    </div>
+    <div id="upr" style="top: 57%;">
+      Чтобы выбрать куб, нужно кликнуть на него мышью
+    </div>
+    <div id="upr" style="top: 63%;">
+      Для поворота куба используйте клавиши W, S, Q, E, A и D. Каждая из них отвечает за поворот куба по соответствующей оси
+    </div>
+    <div id="upr" style="top: 72%;">
+      Для перемещения кубов выбирете один, затем другой с которым необходимо поменять местами
+    </div>
     <div id="map" style="display: flex; flex-wrap: wrap; gap: 7px;">
-      <div style="width: 10px; height: 10px; background-color: rgb(85, 75, 221);" id="cube0"></div>
-      <div style="width: 10px; height: 10px; background-color: rgb(85, 75, 221);" id="cube1"></div>
-      <div style="width: 10px; height: 10px; background-color: rgb(85, 75, 221);" id="cube2"></div>
-      <div style="width: 10px; height: 10px; background-color: rgb(85, 75, 221);" id="cube3"></div>
-      <div style="width: 10px; height: 10px; background-color: rgb(85, 75, 221);" id="cube4"></div>
-      <div style="width: 10px; height: 10px; background-color: rgb(85, 75, 221);" id="cube5"></div>
-      <div style="width: 10px; height: 10px; background-color: rgb(85, 75, 221);" id="cube6"></div>
-      <div style="width: 10px; height: 10px; background-color: rgb(85, 75, 221);" id="cube7"></div>
-      <div style="width: 10px; height: 10px; background-color: rgb(85, 75, 221);" id="cube8"></div>
-      <div style="width: 10px; height: 10px; background-color: rgb(85, 75, 221);" id="cube9"></div>
-      <div style="width: 10px; height: 10px; background-color: rgb(85, 75, 221);" id="cube10"></div>
-      <div style="width: 10px; height: 10px; background-color: rgb(85, 75, 221);" id="cube11"></div>
-      <div style="width: 10px; height: 10px; background-color: rgb(85, 75, 221);" id="cube12"></div>
-      <div style="width: 10px; height: 10px; background-color: rgb(85, 75, 221);" id="cube13"></div>
-      <div style="width: 10px; height: 10px; background-color: rgb(85, 75, 221);" id="cube14"></div>
-      <div style="width: 10px; height: 10px; background-color: rgb(85, 75, 221);" id="cube15"></div>    </div>   
+      <div style="width: 10px; height: 10px; background-color: #554bdd;" id="cube0"></div>
+      <div style="width: 10px; height: 10px; background-color: #554bdd;" id="cube1"></div>
+      <div style="width: 10px; height: 10px; background-color: #554bdd;" id="cube2"></div>
+      <div style="width: 10px; height: 10px; background-color: #554bdd;" id="cube3"></div>
+      <div style="width: 10px; height: 10px; background-color: #554bdd;" id="cube4"></div>
+      <div style="width: 10px; height: 10px; background-color: #554bdd;" id="cube5"></div>
+      <div style="width: 10px; height: 10px; background-color: #554bdd;" id="cube6"></div>
+      <div style="width: 10px; height: 10px; background-color: #554bdd;" id="cube7"></div>
+      <div style="width: 10px; height: 10px; background-color: #554bdd;" id="cube8"></div>
+      <div style="width: 10px; height: 10px; background-color: #554bdd;" id="cube9"></div>
+      <div style="width: 10px; height: 10px; background-color: #554bdd;" id="cube10"></div>
+      <div style="width: 10px; height: 10px; background-color: #554bdd;" id="cube11"></div>
+      <div style="width: 10px; height: 10px; background-color: #554bdd;" id="cube12"></div>
+      <div style="width: 10px; height: 10px; background-color: #554bdd;" id="cube13"></div>
+      <div style="width: 10px; height: 10px; background-color: #554bdd;" id="cube14"></div>
+      <div style="width: 10px; height: 10px; background-color: #554bdd;" id="cube15"></div>    
+    </div>
+    <!-- <script src="script1.js"></script>  -->
     <figure>
       <img id="img" src="github.jpg" alt="Результат">
       <!-- <figcaption>В результате должно получится</figcaption> -->
     </figure>
     <div id="modal">
-      <div id="message">Поздравляем! Вы победили!</div>
+      <!-- <div id="message">Поздравляем! Вы победили!</div> -->
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
     <script src="script.js"></script>
+    
   </body>
 </html>

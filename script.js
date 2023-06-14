@@ -26,7 +26,7 @@ function getRandomColor() {
   }
 
 const materials = [];
-for (var i = 0; i < 16; i++) {
+for (var i = 0; i <= 16; i++) {
   materials[i] = [
     new THREE.MeshBasicMaterial({ color: getRandomColor() }),
     new THREE.MeshBasicMaterial({ color: getRandomColor() }),
@@ -58,8 +58,6 @@ for (var i = 4; i > 0; i--) {
         h++;
     }
 }
-
-console.log(initialPositions)
 
 const cubess = [];
 
@@ -176,28 +174,28 @@ function onKeyDown(event) {
     const anglex = selectedCube.rotation.x;
     const anglez = selectedCube.rotation.z;
 
-    const angle = 0.05
+    const angle = 0.005
     if (angley < angle && angley > -angle && anglex < angle && anglex > -angle && anglez < angle && anglez > -angle) {
       document.getElementById("cube"+cubes.indexOf(selectedCube)).style.backgroundColor = "#00FA9A";
       return
     }
   
-    if (event.key === 'w'){
+    if (event.key === 'w' || event.key === 'ц'){
       onKeyDown_w()
     }
-    else if (event.key === 's'){
+    else if (event.key === 's' || event.key === 'ы'){
       onKeyDown_s()
     }
-    else if (event.key === 'q'){
+    else if (event.key === 'q' || event.key === 'й'){
       onKeyDown_q()
     }
-    else if (event.key === 'e'){
+    else if (event.key === 'e' || event.key === 'у'){
       onKeyDown_e()
     }
-    else if (event.key === 'a'){
+    else if (event.key === 'a' || event.key === 'ф'){
       onKeyDown_a()
     }
-    else if (event.key === 'd'){
+    else if (event.key === 'd' || event.key === 'в'){
       onKeyDown_d()
     }
   }
@@ -205,6 +203,9 @@ function onKeyDown(event) {
 
 function onKeyDown_w() {
   let targetRotationX = rotationX - (Math.PI / 2);
+  if (isAnimating) {
+    return;
+  }
   animateRotationX();
   function animateRotationX() {
     isAnimating = true;
@@ -220,6 +221,9 @@ function onKeyDown_w() {
 
 function onKeyDown_s() {
   let targetRotationX = rotationX + (Math.PI / 2);
+  if (isAnimating) {
+    return;
+  }
   animateRotationX();
   function animateRotationX() {
     isAnimating = true;
@@ -235,6 +239,9 @@ function onKeyDown_s() {
 
 function onKeyDown_q() {
   let targetRotationZ = rotationZ + (Math.PI / 2);
+  if (isAnimating) {
+    return;
+  }
   animateRotationZ();
   function animateRotationZ() {
     isAnimating = true;
@@ -250,6 +257,9 @@ function onKeyDown_q() {
 
 function onKeyDown_e() {
   let targetRotationZ = rotationZ - (Math.PI / 2);
+  if (isAnimating) {
+    return;
+  }
   animateRotationZ();
   function animateRotationZ() {
     isAnimating = true;
@@ -265,6 +275,9 @@ function onKeyDown_e() {
 
 function onKeyDown_a() {
   let targetRotationY = rotationY - (Math.PI / 2);
+  if (isAnimating) {
+    return;
+  }
   animateRotationY();
   function animateRotationY() {
     isAnimating = true;
@@ -280,6 +293,9 @@ function onKeyDown_a() {
 
 function onKeyDown_d() {
   let targetRotationY = rotationY + (Math.PI / 2);
+  if (isAnimating) {
+    return;
+  }
   animateRotationY();
   function animateRotationY() {
     isAnimating = true;
@@ -295,7 +311,7 @@ function onKeyDown_d() {
 
 window.addEventListener('click', onMouseClick);
 window.addEventListener('resize', onWindowResize, false );
-window.addEventListener('keydown', onKeyDown, pobeda, false);
+window.addEventListener('keydown', onKeyDown, false);
 
 document.addEventListener('wheel', function(event) {
   camera.position.z += event.deltaY * 0.01;
@@ -307,29 +323,53 @@ function onWindowResize() {
     renderer.setSize( window.innerWidth, window.innerHeight );
 }
 
-poz = false;
-
-function pobeda() {
-  
-  for (i = 0; i <= 16; i++) {
-    var color = document.getElementById("cube" + i).style.backgroundColor;
-    if (color === "##00FA9A" | color === "#ffa500") {
-      poz = true;
-    } else {
-      poz = false;
-    }
-    if (poz) {
-      var modal = document.getElementById("modal");
-      var message = document.getElementById("message");
-      modal.style.display = "flex";
-      message.innerHTML = "Поздравляем! Вы победили!";
+function checkWin() {
+  const map = document.getElementById('map');
+  const cubes = map.querySelectorAll('div[id^="cube"]');
+  let allDifferentColor = true;
+  for (let i = 0; i < cubes.length; i++) {
+    const currentColor = cubes[i].style.backgroundColor;
+    if (currentColor === 'rgb(85, 75, 221)') {
+      allDifferentColor = false;
+      break;
     }
   }
+  return allDifferentColor;
 }
 
+  
+var gameOver = false;
 
 function animate() {
   requestAnimationFrame(animate);
   renderer.render(scene, camera);
+  if (checkWin() && !gameOver) {
+    gameOver = true;
+    var modal = document.getElementById("modal");
+
+    // Создаем кнопку
+    var button = document.createElement("button");
+    button.innerHTML = "Начать занаво";
+    button.onclick = function() {
+      location.reload();
+    };
+
+    // Добавляем кнопку в модальное окно
+    modal.appendChild(button);
+
+    modal.style.display = "flex";
+  }
 }
+
+
+
+
+
+
+// function animate() {
+//   requestAnimationFrame(animate);
+//   renderer.render(scene, camera);
+//   // pobeda();
+// }
+
 animate();
